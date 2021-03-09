@@ -1,5 +1,7 @@
 package com.blogpessoal2.blogpessoal2.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,17 @@ public class PostagensController {
 
 	@Autowired
 	private PostagensRepository repository;
+	
+	@GetMapping
+	public ResponseEntity<List<Postagens>> getAll(){
+		return ResponseEntity.ok(repository.findAll());
+	}
+	
+	@GetMapping("/{titulo}/{titulo}")
+	public ResponseEntity<List<Postagens>> getByTitulo(@PathVariable String titulo){
+		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
+	}
+	
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Postagens> getById(@PathVariable long id) {
