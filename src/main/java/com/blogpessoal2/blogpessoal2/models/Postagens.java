@@ -39,6 +39,7 @@ public class Postagens {
 	@JsonIgnoreProperties("tb_postagens")
 	private Temas temas;
 
+
 	public long getId() {
 		return id;
 	}
@@ -77,6 +78,8 @@ public class Postagens {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	
+	
 	
 	
 }
