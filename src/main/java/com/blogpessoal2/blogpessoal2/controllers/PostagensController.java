@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,7 +34,6 @@ public class PostagensController {
 	public ResponseEntity<List<Postagens>> getByTitulo(@PathVariable String titulo){
 		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
 	}
-	
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Postagens> getById(@PathVariable long id) {
@@ -43,6 +43,11 @@ public class PostagensController {
 	@PostMapping
 	public ResponseEntity<Postagens> post(@RequestBody Postagens postagens) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(postagens));
+	}
+	
+	@PutMapping
+	public ResponseEntity<Postagens> put (@RequestBody Postagens postagens){
+		return ResponseEntity.status(HttpStatus.OK).body(repository.save(postagens));
 	}
 
 }

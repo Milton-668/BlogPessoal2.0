@@ -25,7 +25,7 @@ public class Postagens {
 	private String titulo;
 	
 	@NotNull
-	@Size(min=10, max=100)
+	@Size(min=10, max=500)
 	private String texto;
 	
 	
